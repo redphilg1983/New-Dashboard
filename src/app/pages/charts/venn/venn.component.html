@@ -1,0 +1,101 @@
+<div>
+  <form [formGroup]="venn" class="">
+    <div class="row">
+      <div class="col-md-6">
+        <label class="control-label">CVV Min Value:</label>
+        <input type="number" min="0" max="9" formControlName="CVVMinValue" class="form-control">
+      </div>
+      <div class="col-md-6">
+        <label class="control-label">CVV Max Value:</label>
+        <input type="number" min="1" max="10" formControlName="CVVMaxValue" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label class="control-label">Last Scan Key:</label>
+        <input type="text" formControlName="lastScanKeyValue" class="form-control">
+      </div>
+      <div class="col-md-6">
+        <label class="control-label">Current Scan Key:</label>
+        <input type="text" formControlName="currentScanKeyValue" class="form-control">
+      </div>
+    </div>
+    <input type="button" (click)="presetValues()" value="Set Preset Values" class="btn btn-primary">
+    <input type="button" (click)="fetchVennData()" value="Fetch Venn Data" class="btn btn-primary">
+    <input type="button" (click)="fetchVennDataLocal()" value="Fetch Venn Data Local" class="btn btn-primary">
+    <br />
+    <br />
+    <div>
+      <ul *ngIf="parentDeltas$ | async as parentDeltas else noData">
+        <ul *ngFor="let group of parentDeltas; index as j">
+          <div class="row">
+            <li class="col-md-6">Parent:
+              <b (click)="showParentDetails[j] = !showParentDetails[j]" style="cursor: pointer">{{ group.Parent }}</b>
+            </li>
+            <table class="col-md-6">
+              <tr (click)="showScanData[j] = !showScanData[j]" style="cursor: pointer">Scan Data: </tr>
+              <div [hidden]="!showScanData[j]">
+                <tr>
+                  Current Scan Id: {{ group.Deltas.CurrentScanId }}
+                </tr>
+                <tr>
+                  Last Scan Id:{{ group.Deltas.LastScanId }}
+                </tr>
+                <tr>
+                  Curent Date:{{ group.Deltas.CurentDate }}
+                </tr>
+                <tr>
+                  Last Date{{ group.Deltas.LastDate }}
+                </tr>
+              </div>
+            </table>
+          </div>
+          <br />
+          <div [hidden]="!showParentDetails[j]">
+            <table class="row">
+              <div class="col-md-4">
+                <tr (click)="showRemoveData[j] = !showRemoveData[j]" style="cursor: pointer">
+                  Removed:{{ group.Deltas.Removed }}
+                  <br />
+                </tr>
+                <tr [hidden]="!showRemoveData[j]">
+                  <li *ngFor="let removed of group.RemoveedList; let i = index">
+                    {{i+1}} {{ removed }}
+                  </li>
+                </tr>
+              </div>
+              <br />
+              <div class="col-md-4">
+                <tr (click)="showRemoveNoChange[j] = !showRemoveNoChange[j]" style="cursor: pointer">
+                  No Change:{{ group.Deltas.NoChange }}
+                  <br />
+                </tr>
+                <tr [hidden]="!showRemoveNoChange[j]">
+                  <li *ngFor="let nochange of group.NoChangeList; let i = index">
+                    {{i+1}} {{ nochange }}
+                  </li>
+                </tr>
+              </div>
+              <br />
+              <div class="col-md-4">
+                <tr (click)="showRemoveAdded[j] = !showRemoveAdded[j]" style="cursor: pointer">
+                  Added:{{ group.Deltas.Added }}
+                  <br />
+                </tr>
+                <tr [hidden]="!showRemoveAdded[j]">
+                  <li *ngFor="let added of group.AddedList; let i = index">
+                    {{i+1}} {{ added }}
+                  </li>
+                </tr>
+              </div>
+              <br />
+            </table>
+            <br>
+          </div>
+        </ul>
+      </ul>
+
+      <ng-template #noData>No Data Available</ng-template>
+    </div>
+  </form>
+</div>
