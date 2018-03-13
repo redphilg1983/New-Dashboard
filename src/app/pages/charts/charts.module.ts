@@ -26,6 +26,7 @@ import { EchartsAreaStackComponent } from './echarts/echarts-area-stack.componen
 import { EchartsBarAnimationComponent } from './echarts/echarts-bar-animation.component';
 import { EchartsRadarComponent } from './echarts/echarts-radar.component';
 import { VennComponent } from './venn/venn.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 const components = [
   ChartjsBarComponent,
@@ -51,6 +52,6 @@ const components = [
 
 @NgModule({
   imports: [ThemeModule, ChartsRoutingModule, NgxEchartsModule, NgxChartsModule, ChartModule],
-  declarations: [...routedComponents, ...components, VennComponent],
+  declarations: [...routedComponents, ...components, VennComponent, BarChartComponent],
 })
 export class ChartsModule {}
