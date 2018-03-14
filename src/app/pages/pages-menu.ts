@@ -115,6 +115,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Venn',
         link: '/pages/charts/venn',
       },
+      {
+        title: 'Bar-Chart',
+        link: '/pages/charts/bar-chart',
+      }
     ],
   },
   {
