@@ -1,8 +1,17 @@
-<div class="col-md-6">
+<!-- <div class="col-md-6">
   <nb-card>
     <nb-card-header>Removed, No Change and Added Values</nb-card-header>
     <nb-card-body>
       <ngx-chartjs-multiple-xaxis></ngx-chartjs-multiple-xaxis>
+    </nb-card-body>
+  </nb-card>
+</div> -->
+
+<div id="graph" class="col-md-6">
+  <nb-card>
+    <nb-card-header>Remove, No Change and Added</nb-card-header>
+    <nb-card-body>
+      <chart style="height: 400px" type="line" [data]="data" [options]="options"></chart>
     </nb-card-body>
   </nb-card>
 </div>

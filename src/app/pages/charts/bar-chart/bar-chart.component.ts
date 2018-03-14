@@ -20,16 +20,16 @@ export class BarChartComponent implements OnDestroy {
       this.data = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
         datasets: [{
-          label: 'dataset - big points',
+          label: 'Removed',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.primary,
-          backgroundColor: colors.primary,
+          borderColor: colors.success,
+          backgroundColor: colors.success,
           fill: false,
           borderDash: [5, 5],
           pointRadius: 8,
           pointHoverRadius: 10,
         }, {
-          label: 'dataset - individual point sizes',
+          label: 'No Change',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           borderColor: colors.dangerLight,
           backgroundColor: colors.dangerLight,
@@ -38,7 +38,7 @@ export class BarChartComponent implements OnDestroy {
           pointRadius: 8,
           pointHoverRadius: 10,
         }, {
-          label: 'dataset - large pointHoverRadius',
+          label: 'Added',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           borderColor: colors.info,
           backgroundColor: colors.info,
