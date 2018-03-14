@@ -31,8 +31,8 @@ export class BarChartComponent implements OnDestroy {
         }, {
           label: 'No Change',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.dangerLight,
-          backgroundColor: colors.dangerLight,
+          borderColor: colors.info,
+          backgroundColor: colors.info,
           fill: false,
           borderDash: [5, 5],
           pointRadius: 8,
@@ -40,8 +40,8 @@ export class BarChartComponent implements OnDestroy {
         }, {
           label: 'Added',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.info,
-          backgroundColor: colors.info,
+          borderColor: colors.dangerLight,
+          backgroundColor: colors.dangerLight,
           fill: false,
           pointRadius: 8,
           pointHoverRadius: 10,
