@@ -6,7 +6,8 @@ import { EchartsComponent } from './echarts/echarts.component';
 import { D3Component } from './d3/d3.component';
 import { ChartjsComponent } from './chartjs/chartjs.component';
 import { VennComponent } from './venn/venn.component';
-import { BarChartComponent } from './bar-chart/bar-chart.component'
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { AdvancedBarChartComponent } from './advanced-bar-chart/advanced-bar-chart.component'
 
 const routes: Routes = [{
   path: '',
@@ -21,14 +22,19 @@ const routes: Routes = [{
     path: 'chartjs',
     component: ChartjsComponent,
   }
-  , {
+    , {
     path: 'venn',
     component: VennComponent,
   }
-, {
+    , {
     path: 'bar-chart',
     component: BarChartComponent,
-}],
+  }
+    , {
+    path: 'advanced-bar-chart',
+    component: AdvancedBarChartComponent,
+  }
+  ],
 }];
 
 @NgModule({
