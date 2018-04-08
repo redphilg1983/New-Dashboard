@@ -20,10 +20,10 @@ export class BarChartComponent implements OnDestroy {
       this.data = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
         datasets: [{
-          label: 'Removed',
+          label: 'Added',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.success,
-          backgroundColor: colors.success,
+          borderColor: colors.dangerLight,
+          backgroundColor: colors.dangerLight,
           fill: false,
           borderDash: [5, 5],
           pointRadius: 8,
@@ -35,14 +35,6 @@ export class BarChartComponent implements OnDestroy {
           backgroundColor: colors.info,
           fill: false,
           borderDash: [5, 5],
-          pointRadius: 8,
-          pointHoverRadius: 10,
-        }, {
-          label: 'Added',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.dangerLight,
-          backgroundColor: colors.dangerLight,
-          fill: false,
           pointRadius: 8,
           pointHoverRadius: 10,
         }],

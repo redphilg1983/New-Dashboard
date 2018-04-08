@@ -82,12 +82,4 @@ export class VennComponent implements OnInit {
     console.log(URL);
     this.parentDeltas$ = this.http.get<IParentDelta[]>(URL).do(console.log).map(data => _.values(data));
   }
-
-  // showParentInfo(){
-  //   if(this.parentHiddenInfo){
-  //     this.parentHiddenInfo = false;
-  //   }else{
-  //     this.parentHiddenInfo = true;
-  //   }
-  // }
 }

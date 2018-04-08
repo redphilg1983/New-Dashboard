@@ -1,4 +1,5 @@
-<div id="graph" class="col-md-6">
+<div class='row'>
+  <div id="graph" class="col-md-6">
     <nb-card>
       <nb-card-header>Removed, No Change and Added</nb-card-header>
       <nb-card-body>
@@ -6,3 +7,100 @@
       </nb-card-body>
     </nb-card>
   </div>
+</div>
+<div class='row'>
+  <div class="col-md-12">
+    <ul *ngIf="parentDeltas$ | async as parentDeltas else noData">
+      <ul *ngFor="let group of parentDeltas; index as j">
+        <div class="row">
+          <li class="col-md-6">Parent:
+            <b (click)="showParentDetails[j] = !showParentDetails[j]" style="cursor: pointer">{{ group.Parent }}</b>
+          </li>
+          <table class="col-md-6">
+            <tr (click)="showScanData[j] = !showScanData[j]" style="cursor: pointer">Scan Name: {{ group.ScanName }} </tr>
+            <div [hidden]="!showScanData[j]">
+              <div>
+                <div *ngFor="let item of group.Deltas; index as h">
+                  <tr>
+                    Current Scan Id: {{ item.CurrentScanId }}
+                  </tr>
+                  <tr>
+                    Last Scan Id:{{ item.LastScanId }}
+                  </tr>
+                  <tr>
+                    Curent Date:{{ item.CurentDate }}
+                  </tr>
+                  <tr>
+                    Last Date{{ item.LastDate }}
+                  </tr>
+                </div>
+              </div>
+            </div>
+          </table>
+        </div>
+        <br />
+        <div [hidden]="!showParentDetails[j]">
+          <table class="row" *ngFor="let item of group.Deltas; index as k">
+            <div class="col-md-4">
+              <tr (click)="showRemoveData[j] = !showRemoveData[j]">
+                Removed:{{ item.Removed }}
+                <br />
+              </tr>
+              <tr [hidden]="!showRemoveData[j]">
+                <li *ngFor="let removed of group.RemoveedList; let i = index">
+                  {{i+1}} {{ removed }}
+                </li>
+              </tr>
+            </div>
+            <br />
+            <div class="col-md-4">
+              <tr (click)="showRemoveNoChange[j] = !showRemoveNoChange[j]">
+                No Change:{{ item.NoChange }}
+                <br />
+              </tr>
+              <tr [hidden]="!showRemoveNoChange[j]">
+                <li *ngFor="let nochange of group.NoChangeList; let i = index">
+                  {{i+1}} {{ nochange }}
+                </li>
+              </tr>
+            </div>
+            <br />
+            <div class="col-md-4">
+              <tr (click)="showRemoveAdded[j] = !showRemoveAdded[j]">
+                Added:{{ item.Added }}
+                <br />
+              </tr>
+              <tr [hidden]="!showRemoveAdded[j]">
+                <li *ngFor="let added of group.AddedList; let i = index">
+                  {{i+1}} {{ added }}
+                </li>
+              </tr>
+            </div>
+            <br />
+          </table>
+          <br>
+        </div>
+      </ul>
+    </ul>
+    <ng-template #noData>No Data Available</ng-template>
+  </div>
+</div>
+
+<!-- <div class="col-md-12">
+  <ul *ngIf="parentDeltas$ | async as parentDeltas else noData">
+    <ul *ngFor="let group of parentDeltas; index as j">
+      <div class="row">
+        <li class="col-md-6">Parent:
+          <b (click)="showParentDetails[j] = !showParentDetails[j]" style="cursor: pointer">{{ group.Parent }}</b>
+        </li>
+        <ul *ngFor="let scan of parentDeltas; index as g">
+          <div>
+          <label>Current Scan ID: </label>
+          <li>{{ group.scan.CurrentScanId}}</li>
+          </div>
+        </ul>
+      </div>
+    </ul>
+  </ul>
+  <ng-template #noData>No Data Available</ng-template>
+</div> -->
